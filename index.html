@@ -4,7 +4,44 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Hammad Rehman — AI / Machine Learning Engineer</title>
-<meta name="description" content="Hammad Rehman — AI / Machine Learning Engineer based in London. MSc Artificial Intelligence, Microsoft Azure Developer Associate. Building end-to-end ML systems and LLM-powered agents." />
+<meta name="description" content="Hammad Rehman — AI / Machine Learning Engineer & Unity / multiplayer developer based in London. MSc Artificial Intelligence, Microsoft Azure Developer Associate. Building end-to-end ML systems, LLM-powered agents and interactive 3D experiences." />
+<meta name="author" content="Hammad Rehman" />
+<meta name="theme-color" content="#0e0d0b" />
+<link rel="canonical" href="https://hammadrehman.netlify.app/" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230e0d0b'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23ff5a1f'/%3E%3C/svg%3E" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Hammad Rehman — AI / ML Engineer & Game Developer" />
+<meta property="og:description" content="AI / Machine Learning Engineer and Unity / multiplayer developer. MSc Artificial Intelligence, Azure Developer Associate. End-to-end ML systems, LLM agents and interactive 3D." />
+<meta property="og:url" content="https://hammadrehman.netlify.app/" />
+<meta property="og:image" content="https://hammadrehman.netlify.app/og.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Hammad Rehman — AI / ML Engineer & Game Developer" />
+<meta name="twitter:description" content="AI / ML Engineer and Unity / multiplayer developer based in London. End-to-end ML systems, LLM agents and interactive 3D." />
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Hammad Rehman",
+  "jobTitle": "AI / Machine Learning Engineer",
+  "description": "AI / Machine Learning Engineer and Unity / multiplayer developer based in London.",
+  "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" },
+  "email": "mailto:hammadrehman454@gmail.com",
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Northumbria University, London" },
+    { "@type": "CollegeOrUniversity", "name": "Lahore Garrison University" }
+  ],
+  "knowsAbout": ["Machine Learning","Deep Learning","LLM Agents","Time-Series Forecasting","Computer Vision","Unity","C#","Multiplayer Systems","Python"],
+  "sameAs": [
+    "https://github.com/HammadRehmanAwan",
+    "https://linkedin.com/in/hammadrehman454",
+    "https://huggingface.co/HammadRehman"
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,400..600&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -209,9 +246,177 @@
     .two-col{grid-template-columns:1fr;gap:56px}
     section{padding:96px 0}
   }
+
+  /* ============ PHASE-1 UPGRADE COMPONENTS ============ */
+
+  /* cursor glow (desktop, fine pointer only) */
+  #cursor-glow{position:fixed;top:0;left:0;width:380px;height:380px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,90,31,.10),transparent 60%);
+    transform:translate(-50%,-50%);pointer-events:none;z-index:5;opacity:0;transition:opacity .4s;will-change:transform}
+  @media(hover:hover) and (pointer:fine){body:hover #cursor-glow{opacity:1}}
+  @media(hover:none),(pointer:coarse){#cursor-glow{display:none}}
+
+  /* magnetic / depth on interactive cards */
+  .magnetic{will-change:transform;transition:transform .25s cubic-bezier(.16,1,.3,1)}
+
+  /* nav hire CTA */
+  .nav-hire{background:var(--accent);color:#0e0d0b!important;border:1px solid var(--accent);
+    padding:9px 18px;border-radius:40px;font-weight:600;transition:all .25s}
+  .nav-hire::after{display:none}
+  .nav-hire:hover{transform:translateY(-2px);box-shadow:0 10px 30px -10px rgba(255,90,31,.6)}
+
+  /* 3D hero canvas */
+  #three{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:0;transition:opacity 1.2s ease}
+  #three.ready{opacity:.9}
+  .hero.has-3d #chart{display:none}
+
+  /* ---- GitHub / metrics dashboard ---- */
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .metric{background:var(--bg);padding:30px 26px;transition:background .3s;position:relative}
+  .metric:hover{background:var(--bg-2)}
+  .metric .mv{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,5vw,3.4rem);
+    line-height:1;color:var(--ink);letter-spacing:-.02em}
+  .metric .mv b{color:var(--accent);font-weight:400}
+  .metric .mk{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-faint);margin-top:12px}
+  .metric.skel .mv{color:transparent;border-radius:6px;
+    background:linear-gradient(90deg,var(--line),#3a352d,var(--line));background-size:200% 100%;
+    animation:shimmer 1.4s infinite;width:60%;height:1em}
+  @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+  .gh-note{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);margin-top:18px;letter-spacing:.04em}
+  .gh-note b{color:var(--accent)}
+
+  /* ---- journey timeline ---- */
+  .journey{display:flex;flex-direction:column;gap:0;position:relative;margin-top:8px}
+  .jrow{display:grid;grid-template-columns:1fr 56px 1fr;align-items:center;gap:0}
+  .jrow .jcard{border:1px solid var(--line);border-radius:14px;padding:24px 26px;
+    background:linear-gradient(180deg,var(--bg-2),transparent);transition:all .35s}
+  .jrow .jcard:hover{border-color:#3a352d;transform:translateY(-3px)}
+  .jrow .jcard .jyear{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--accent);text-transform:uppercase}
+  .jrow .jcard h3{font-family:var(--serif);font-weight:400;font-size:1.4rem;margin:6px 0 8px;letter-spacing:-.01em}
+  .jrow .jcard p{color:var(--ink-dim);font-size:.96rem;line-height:1.6}
+  .jrow .jcard .jtag{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:.68rem;
+    color:var(--accent-soft);border:1px solid var(--line);padding:3px 10px;border-radius:30px}
+  .jaxis{display:flex;flex-direction:column;align-items:center;align-self:stretch;position:relative}
+  .jaxis .jline{flex:1;width:2px;background:linear-gradient(var(--accent),var(--line))}
+  .jaxis .jnode{width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);
+    box-shadow:0 0 0 4px rgba(255,90,31,.12);flex:none;margin:6px 0}
+  .jrow.right .jcard{grid-column:3}
+  .jrow.left .jslot{grid-column:1}
+  .jrow .empty{visibility:hidden}
+
+  /* ---- research grid ---- */
+  .research-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .rcard{border:1px solid var(--line);border-radius:14px;padding:26px;background:var(--bg);
+    transition:all .35s;position:relative;overflow:hidden}
+  .rcard::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 100% 0,rgba(255,90,31,.10),transparent 55%);
+    opacity:0;transition:opacity .35s}
+  .rcard:hover{transform:translateY(-4px);border-color:#3a352d}
+  .rcard:hover::after{opacity:1}
+  .rcard .ric{font-family:var(--mono);font-size:.72rem;color:var(--accent);letter-spacing:.12em}
+  .rcard h3{font-family:var(--serif);font-weight:400;font-size:1.3rem;margin:10px 0 8px;letter-spacing:-.01em}
+  .rcard p{color:var(--ink-dim);font-size:.95rem;line-height:1.6}
+  .roadmap{margin-top:34px;border:1px solid var(--line);border-radius:14px;padding:28px;
+    background:linear-gradient(180deg,var(--bg-2),transparent)}
+  .roadmap .rm-row{display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line)}
+  .roadmap .rm-row:last-child{border-bottom:0}
+  .roadmap .rm-when{font-family:var(--mono);font-size:.74rem;color:var(--accent);white-space:nowrap;min-width:104px}
+  .roadmap .rm-txt{color:var(--ink-dim);font-size:.98rem;line-height:1.6}
+  .roadmap .rm-txt b{color:var(--ink)}
+
+  /* ---- cost estimator ---- */
+  .estimator{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;border:1px solid var(--line);
+    border-radius:16px;overflow:hidden;background:linear-gradient(180deg,var(--bg-2),transparent)}
+  .est-form{padding:32px}
+  .est-form .fg{margin-bottom:22px}
+  .est-form label.lbl{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-faint);display:block;margin-bottom:10px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-family:var(--mono);font-size:.8rem;color:var(--ink-dim);border:1px solid var(--line);
+    padding:8px 14px;border-radius:30px;cursor:pointer;transition:all .2s;user-select:none}
+  .chip:hover{border-color:#3a352d;color:var(--ink)}
+  .chip.on{background:var(--accent);color:#0e0d0b;border-color:var(--accent);font-weight:600}
+  .est-out{padding:32px;border-left:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;
+    background:radial-gradient(120% 80% at 100% 0,rgba(255,90,31,.07),transparent 60%)}
+  .est-out .eo-k{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+  .est-out .eo-budget{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,5vw,2.8rem);color:var(--accent);
+    letter-spacing:-.02em;margin:6px 0 18px;line-height:1}
+  .est-out .eo-line{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);
+    font-size:.95rem;color:var(--ink-dim)}
+  .est-out .eo-line b{color:var(--ink);font-family:var(--mono);font-size:.85rem;font-weight:500}
+  .est-out .eo-stack{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0 22px}
+  .est-out .eo-stack span{font-family:var(--mono);font-size:.7rem;color:var(--ink-faint);border:1px solid var(--line);padding:3px 9px;border-radius:30px}
+
+  /* ---- AI assistant ---- */
+  #ai-fab{position:fixed;right:24px;bottom:24px;z-index:1200;width:60px;height:60px;border-radius:50%;
+    background:var(--accent);border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 14px 40px -10px rgba(255,90,31,.55);transition:transform .28s, box-shadow .28s}
+  #ai-fab:hover{transform:translateY(-3px) scale(1.04)}
+  #ai-fab svg{width:26px;height:26px}
+  #ai-fab .fab-dot{position:absolute;top:8px;right:8px;width:9px;height:9px;border-radius:50%;
+    background:#3ddc84;border:2px solid var(--accent)}
+  #ai-panel{position:fixed;right:24px;bottom:96px;z-index:1200;width:min(380px,calc(100vw - 32px));
+    height:min(560px,calc(100vh - 130px));background:rgba(20,18,14,.86);backdrop-filter:blur(16px);
+    border:1px solid var(--line);border-radius:18px;display:flex;flex-direction:column;overflow:hidden;
+    transform:translateY(20px) scale(.96);opacity:0;pointer-events:none;transform-origin:bottom right;
+    transition:transform .32s cubic-bezier(.16,1,.3,1),opacity .32s}
+  #ai-panel.open{transform:none;opacity:1;pointer-events:auto}
+  .ai-head{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px}
+  .ai-head .ava{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#b53a10);
+    display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700;color:#0e0d0b;font-size:.9rem}
+  .ai-head .ai-name{font-family:var(--mono);font-size:.86rem;color:var(--ink);font-weight:600}
+  .ai-head .ai-sub{font-family:var(--mono);font-size:.66rem;color:#3ddc84;letter-spacing:.06em}
+  .ai-head .ai-x{margin-left:auto;background:none;border:0;color:var(--ink-dim);cursor:pointer;font-size:1.3rem;line-height:1;padding:4px}
+  .ai-head .ai-x:hover{color:var(--accent)}
+  .ai-body{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px;scroll-behavior:smooth}
+  .ai-msg{max-width:84%;padding:11px 14px;border-radius:14px;font-size:.92rem;line-height:1.55}
+  .ai-msg.bot{background:var(--bg-2);border:1px solid var(--line);color:var(--ink);align-self:flex-start;border-bottom-left-radius:4px}
+  .ai-msg.user{background:var(--accent);color:#0e0d0b;align-self:flex-end;border-bottom-right-radius:4px;font-weight:500}
+  .ai-msg.bot a{color:var(--accent);border-bottom:1px solid rgba(255,90,31,.4)}
+  .ai-typing{display:flex;gap:5px;align-items:center;padding:11px 14px;background:var(--bg-2);
+    border:1px solid var(--line);border-radius:14px;border-bottom-left-radius:4px;align-self:flex-start}
+  .ai-typing span{width:7px;height:7px;border-radius:50%;background:var(--ink-faint);animation:blink 1.2s infinite}
+  .ai-typing span:nth-child(2){animation-delay:.2s}.ai-typing span:nth-child(3){animation-delay:.4s}
+  @keyframes blink{0%,60%,100%{opacity:.25;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+  .ai-sugg{display:flex;flex-wrap:wrap;gap:7px;padding:0 18px 12px}
+  .ai-sugg button{font-family:var(--mono);font-size:.74rem;color:var(--ink-dim);background:none;
+    border:1px solid var(--line);padding:7px 11px;border-radius:30px;cursor:pointer;transition:all .2s;text-align:left}
+  .ai-sugg button:hover{border-color:var(--accent);color:var(--accent)}
+  .ai-foot{padding:12px;border-top:1px solid var(--line);display:flex;gap:8px;align-items:center}
+  .ai-foot input{flex:1;background:var(--bg);border:1px solid var(--line);border-radius:30px;padding:11px 16px;
+    color:var(--ink);font-family:var(--sans);font-size:.9rem;outline:none;transition:border-color .2s}
+  .ai-foot input:focus{border-color:var(--accent)}
+  .ai-foot button{background:none;border:1px solid var(--line);border-radius:50%;width:40px;height:40px;flex:none;
+    cursor:pointer;color:var(--ink-dim);display:flex;align-items:center;justify-content:center;transition:all .2s}
+  .ai-foot button:hover{border-color:var(--accent);color:var(--accent)}
+  .ai-foot button.mic.rec{background:var(--accent);color:#0e0d0b;border-color:var(--accent);animation:pulse 1.2s infinite}
+  .ai-foot button svg{width:18px;height:18px}
+
+  /* per-project "ask AI" link */
+  .ask-ai{font-family:var(--mono);font-size:.7rem;color:var(--ink-faint);border:1px solid var(--line);
+    padding:4px 10px;border-radius:30px;cursor:pointer;transition:all .2s;margin-top:14px;display:inline-flex;
+    align-items:center;gap:6px;background:none}
+  .ask-ai:hover{border-color:var(--accent);color:var(--accent)}
+
+  @media(max-width:860px){
+    .metrics{grid-template-columns:repeat(2,1fr)}
+    .jrow{grid-template-columns:30px 1fr;gap:14px}
+    .jrow .jcard,.jrow.right .jcard{grid-column:2}
+    .jrow .jslot.empty,.jaxis .jline{display:none}
+    .jaxis{flex-direction:row;align-self:start;padding-top:24px}
+    .research-grid{grid-template-columns:1fr}
+    .estimator{grid-template-columns:1fr}
+    .est-out{border-left:0;border-top:1px solid var(--line)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+    html{scroll-behavior:auto}
+  }
 </style>
 </head>
 <body>
+<div id="cursor-glow" aria-hidden="true"></div>
 
 <header id="hdr">
   <div class="wrap">
@@ -221,8 +426,9 @@
         <a href="#about">About</a>
         <a href="#skills">Stack</a>
         <a href="#work">Work</a>
-        <a href="#path">Path</a>
-        <a href="#contact" class="nav-cta">Get in touch</a>
+        <a href="#journey">Journey</a>
+        <a href="#research">Research</a>
+        <a href="hire-me.html" class="nav-hire">Hire Hammad</a>
       </div>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </nav>
@@ -231,18 +437,19 @@
 
 <!-- HERO -->
 <section class="hero" id="top">
-  <canvas id="chart"></canvas>
+  <canvas id="three" aria-hidden="true"></canvas>
+  <canvas id="chart" aria-hidden="true"></canvas>
   <div class="hero-grad"></div>
   <div class="wrap hero-inner">
     <span class="label" id="h-label"><span class="ln"></span>London, England — Available for work</span>
     <h1 class="name">Hammad<br>Reh<em>man</em></h1>
     <div class="role" id="h-role">
-      AI&nbsp;Engineer <span class="sep">/</span> Machine&nbsp;Learning&nbsp;Engineer
+      AI&nbsp;Engineer <span class="sep">/</span> Unity&nbsp;Developer <span class="sep">/</span> Multiplayer&nbsp;Systems
     </div>
-    <p class="blurb" id="h-blurb">I design, build and ship end-to-end machine-learning systems — from multi-million-row data pipelines to LLM-powered agents — turning complex models into tools people actually use.</p>
+    <p class="blurb" id="h-blurb">I design, build and ship end-to-end machine-learning systems — from multi-million-row data pipelines to LLM-powered agents — and bring a 3+ year Unity / C# multiplayer background to everything I build. Complex models, turned into tools people actually use.</p>
     <div class="hero-cta" id="h-cta">
-      <a href="#work" class="btn btn-primary">View selected work <span class="arr">↗</span></a>
-      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      <a href="#work" class="btn btn-primary magnetic">View selected work <span class="arr">↗</span></a>
+      <a href="hire-me.html" class="btn btn-ghost magnetic">Hire Hammad</a>
     </div>
   </div>
   <div class="scroll-hint"><span>Scroll</span><span class="bar"></span></div>
@@ -296,6 +503,7 @@
         <h3>NHS Elective Waiting-List Forecasting</h3>
         <p>An end-to-end forecasting pipeline over ~10.6M rows of NHS England RTT data, aggregated to hospital × specialty × month (thousands of time series) via memory-efficient chunked processing. Benchmarked 7 models — Ridge, Random Forest, XGBoost vs. Holt-Winters, ARIMA, SARIMA and Prophet — to find the strongest 12-month predictor. Shipped as a privacy-preserving web app running 100% client-side.</p>
         <div class="pstack"><span>Python</span><span>XGBoost</span><span>Prophet</span><span>SARIMA</span><span>Netlify</span></div>
+        <span class="ask-ai" data-proj="nhs" role="button" tabindex="0">✦ Ask AI about this project</span>
       </div>
       <span class="plink">Live site <span class="arr">↗</span></span>
     </a>
@@ -307,6 +515,7 @@
         <h3>Gmail-Integrated AI Email-Reply Agent</h3>
         <p>An LLM-powered agent with two modes — autonomous and assisted — that reads, drafts and sends Gmail replies. Confidence thresholds auto-handle high-confidence messages and escalate the rest for human review, integrating the Gmail API with prompt-engineered LLM calls to cut time spent on routine correspondence.</p>
         <div class="pstack"><span>LangChain</span><span>Anthropic API</span><span>OpenAI API</span><span>Gmail API</span></div>
+        <span class="ask-ai" data-proj="email" role="button" tabindex="0">✦ Ask AI about this project</span>
       </div>
       <span class="plink">Details <span class="arr">↗</span></span>
     </a>
@@ -318,6 +527,7 @@
         <h3>AI Image-Authenticity Detector</h3>
         <p>A React application that classifies AI-generated versus authentic images through a vision-model API, overlaying heatmaps that pinpoint the regions driving each prediction — making the model's reasoning legible to non-technical users.</p>
         <div class="pstack"><span>React</span><span>Vision API</span><span>Heatmaps</span></div>
+        <span class="ask-ai" data-proj="vision" role="button" tabindex="0">✦ Ask AI about this project</span>
       </div>
       <span class="plink">Details <span class="arr">↗</span></span>
     </a>
@@ -329,6 +539,7 @@
         <h3>Credit-Risk &amp; Mortgage-Arrears Scoring</h3>
         <p>Two interactive ML risk-prediction Spaces — German credit-risk and UK mortgage-arrears — owned end-to-end from dataset preparation through model building to live hosting, letting non-technical users score cases in real time via a Gradio / Streamlit UI.</p>
         <div class="pstack"><span>scikit-learn</span><span>Gradio</span><span>Streamlit</span><span>HF Spaces</span></div>
+        <span class="ask-ai" data-proj="credit" role="button" tabindex="0">✦ Ask AI about this project</span>
       </div>
       <span class="plink">View Spaces <span class="arr">↗</span></span>
     </a>
@@ -340,6 +551,7 @@
         <h3>Crypto Futures Trading Calculator</h3>
         <p>A client-side calculator for crypto futures traders — computes PnL, liquidation price, required margin and risk/reward ratio in real time. Built for speed and accuracy with zero dependencies, running entirely in the browser with no data sent to any server.</p>
         <div class="pstack"><span>JavaScript</span><span>HTML</span><span>CSS</span><span>GitHub Pages</span></div>
+        <span class="ask-ai" data-proj="crypto" role="button" tabindex="0">✦ Ask AI about this project</span>
       </div>
       <span class="plink">Live tool <span class="arr">↗</span></span>
     </a>
@@ -351,16 +563,104 @@
         <h3>Chrome Browser Extension</h3>
         <p>A published Chrome extension available on the Chrome Web Store, extending browser functionality with a focused productivity feature. Reviewed and approved by Google's extension team and available to install directly from the store.</p>
         <div class="pstack"><span>JavaScript</span><span>Chrome APIs</span><span>Chrome Web Store</span></div>
+        <span class="ask-ai" data-proj="chrome" role="button" tabindex="0">✦ Ask AI about this project</span>
       </div>
       <span class="plink">View on Chrome Store <span class="arr">↗</span></span>
     </a>
   </div>
 </section>
 
+<!-- DEVELOPER PULSE / GITHUB DASHBOARD -->
+<section id="pulse">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">04</span><h2>Developer pulse</h2><span class="rule"></span></div>
+    <div class="metrics" id="metrics">
+      <div class="metric skel reveal" data-live="repos"><div class="mv">0</div><div class="mk">Public repos</div></div>
+      <div class="metric skel reveal" data-d="1" data-live="followers"><div class="mv">0</div><div class="mk">GitHub followers</div></div>
+      <div class="metric reveal" data-d="2" data-count="6" data-suffix="+"><div class="mv">0</div><div class="mk">Years building</div></div>
+      <div class="metric reveal" data-d="3" data-count="12" data-suffix="+"><div class="mv">0</div><div class="mk">AI / ML projects</div></div>
+      <div class="metric reveal" data-count="20" data-suffix="+"><div class="mv">0</div><div class="mk">Unity / game builds</div></div>
+      <div class="metric reveal" data-d="1" data-count="6"><div class="mv">0</div><div class="mk">Production ML apps</div></div>
+      <div class="metric reveal" data-d="2" data-count="40" data-suffix="+"><div class="mv">0</div><div class="mk">Technologies</div></div>
+      <div class="metric reveal" data-d="3" data-count="10" data-suffix="M+"><div class="mv">0</div><div class="mk">Data rows processed</div></div>
+    </div>
+    <p class="gh-note reveal">Live repo &amp; follower counts pulled from the <b>GitHub REST API</b> at load · curated metrics reflect cumulative work since 2019.</p>
+  </div>
+</section>
+
+<!-- JOURNEY TIMELINE -->
+<section id="journey">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">05</span><h2>The journey</h2><span class="rule"></span></div>
+    <div class="journey">
+      <div class="jrow left reveal">
+        <div class="jcard magnetic">
+          <div class="jyear">2019 · Pakistan</div>
+          <h3>First lines of code</h3>
+          <p>Began a BSc (Hons) in Software Engineering at Lahore Garrison University — data structures, algorithms and my first Python &amp; C#.</p>
+          <span class="jtag">Foundations</span>
+        </div>
+        <div class="jaxis"><span class="jline"></span><span class="jnode"></span><span class="jline"></span></div>
+        <div class="jslot empty"></div>
+      </div>
+      <div class="jrow right reveal" data-d="1">
+        <div class="jslot empty"></div>
+        <div class="jaxis"><span class="jline"></span><span class="jnode"></span><span class="jline"></span></div>
+        <div class="jcard magnetic">
+          <div class="jyear">2019 — 2024 · Freelance</div>
+          <h3>Top Rated Unity developer</h3>
+          <p>Shipped interactive 3D &amp; AR (Vuforia) for international clients on Upwork (100% success) and Fiverr — game mechanics, UI/UX and tooling in C# / Unity.</p>
+          <span class="jtag">Unity · C#</span>
+        </div>
+      </div>
+      <div class="jrow left reveal" data-d="1">
+        <div class="jcard magnetic">
+          <div class="jyear">Game systems</div>
+          <h3>Real-time multiplayer</h3>
+          <p>Built networked, real-time multiplayer with Mirror — synced gameplay across Windows, Android and iOS, the engineering rigour I still bring to ML work.</p>
+          <span class="jtag">Multiplayer · Mirror</span>
+        </div>
+        <div class="jaxis"><span class="jline"></span><span class="jnode"></span><span class="jline"></span></div>
+        <div class="jslot empty"></div>
+      </div>
+      <div class="jrow right reveal" data-d="1">
+        <div class="jslot empty"></div>
+        <div class="jaxis"><span class="jline"></span><span class="jnode"></span><span class="jline"></span></div>
+        <div class="jcard magnetic">
+          <div class="jyear">2025 · London</div>
+          <h3>Into AI, in London</h3>
+          <p>Relocated to London for an MSc in Artificial Intelligence at Northumbria University — and earned Microsoft's Azure Developer Associate certification.</p>
+          <span class="jtag">MSc AI · Azure</span>
+        </div>
+      </div>
+      <div class="jrow left reveal" data-d="1">
+        <div class="jcard magnetic">
+          <div class="jyear">2025 — present</div>
+          <h3>AI / ML Engineer</h3>
+          <p>Junior AI Engineer at Web Tackles — LLM agents, forecasting on 10M+ rows, and credit-risk models shipped live as Hugging Face Spaces.</p>
+          <span class="jtag">LLM agents · MLOps</span>
+        </div>
+        <div class="jaxis"><span class="jline"></span><span class="jnode"></span><span class="jline"></span></div>
+        <div class="jslot empty"></div>
+      </div>
+      <div class="jrow right reveal" data-d="1">
+        <div class="jslot empty"></div>
+        <div class="jaxis"><span class="jline"></span><span class="jnode"></span><span class="jline"></span></div>
+        <div class="jcard magnetic">
+          <div class="jyear">Next</div>
+          <h3>PhD research</h3>
+          <p>Targeting doctoral research at the intersection of reinforcement learning, AI agents and AI for games — where my two worlds finally meet.</p>
+          <span class="jtag">Future</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PATH -->
 <section id="path">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="num">04</span><h2>Experience &amp; education</h2><span class="rule"></span></div>
+    <div class="sec-head reveal"><span class="num">06</span><h2>Experience &amp; education</h2><span class="rule"></span></div>
     <div class="two-col">
       <div class="reveal">
         <span class="label" style="display:block;margin-bottom:28px">Experience</span>
@@ -422,10 +722,86 @@
   </div>
 </section>
 
+<!-- RESEARCH -->
+<section id="research">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">07</span><h2>Research interests</h2><span class="rule"></span></div>
+    <div class="research-grid">
+      <div class="rcard magnetic reveal"><div class="ric">R1</div><h3>Reinforcement Learning</h3><p>Reward shaping, policy optimisation and sample-efficient agents that learn control from interaction rather than labels.</p></div>
+      <div class="rcard magnetic reveal" data-d="1"><div class="ric">R2</div><h3>AI Agents</h3><p>Tool-using, memory-augmented LLM agents — planning, self-correction and reliable autonomous task completion.</p></div>
+      <div class="rcard magnetic reveal" data-d="2"><div class="ric">R3</div><h3>Multi-Agent Systems</h3><p>Coordination, negotiation and emergent behaviour between many agents — bridging game AI and distributed ML.</p></div>
+      <div class="rcard magnetic reveal"><div class="ric">R4</div><h3>Computer Vision</h3><p>Authenticity detection, explainable heatmaps and inference that stays legible to non-technical users.</p></div>
+      <div class="rcard magnetic reveal" data-d="1"><div class="ric">R5</div><h3>Generative AI</h3><p>Retrieval-augmented generation, grounding and evaluation — keeping generative systems accurate and honest.</p></div>
+      <div class="rcard magnetic reveal" data-d="2"><div class="ric">R6</div><h3>AI for Games</h3><p>Where it all converges: learned NPC behaviour, procedural systems and RL agents inside real game engines.</p></div>
+    </div>
+    <div class="roadmap reveal">
+      <div class="rm-row"><div class="rm-when">Now</div><div class="rm-txt"><b>Applied AI engineering</b> — shipping LLM agents and ML systems in production while deepening RL fundamentals.</div></div>
+      <div class="rm-row"><div class="rm-when">Next 12 mo</div><div class="rm-txt"><b>Research output</b> — a focused write-up on multi-agent coordination for game environments. <em style="color:var(--ink-faint)">Publications — placeholder, in progress.</em></div></div>
+      <div class="rm-row"><div class="rm-when">Goal</div><div class="rm-txt"><b>PhD research</b> in reinforcement learning &amp; AI agents for games — seeking supervisors and collaborators.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT COST ESTIMATOR -->
+<section id="estimator">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="num">08</span><h2>Project estimator</h2><span class="rule"></span></div>
+    <div class="estimator reveal">
+      <div class="est-form">
+        <div class="fg">
+          <span class="lbl">Project type</span>
+          <div class="chips" data-group="type" data-single="1">
+            <span class="chip on" data-v="ml" data-base="6000" data-weeks="4" data-stack="Python,FastAPI,scikit-learn,Docker">ML / data app</span>
+            <span class="chip" data-v="agent" data-base="9000" data-weeks="5" data-stack="LangChain,LLM API,FastAPI,Vector DB">LLM agent</span>
+            <span class="chip" data-v="game" data-base="8000" data-weeks="6" data-stack="Unity,C#,Mirror">Unity game</span>
+            <span class="chip" data-v="web" data-base="4000" data-weeks="3" data-stack="JavaScript,Three.js,Netlify">Web / 3D site</span>
+          </div>
+        </div>
+        <div class="fg">
+          <span class="lbl">Features</span>
+          <div class="chips" data-group="features">
+            <span class="chip" data-v="auth" data-cost="1200" data-w="1">Auth / accounts</span>
+            <span class="chip" data-v="mp" data-cost="3500" data-w="2">Multiplayer / realtime</span>
+            <span class="chip" data-v="ai" data-cost="2500" data-w="1.5">AI / ML model</span>
+            <span class="chip" data-v="dash" data-cost="1500" data-w="1">Dashboard / analytics</span>
+            <span class="chip" data-v="3d" data-cost="2000" data-w="1.5">3D / WebGL</span>
+            <span class="chip" data-v="mobile" data-cost="2200" data-w="1.5">Mobile build</span>
+          </div>
+        </div>
+        <div class="fg">
+          <span class="lbl">Timeline</span>
+          <div class="chips" data-group="timeline" data-single="1">
+            <span class="chip" data-v="rush" data-mult="1.4">Rush (1.4×)</span>
+            <span class="chip on" data-v="standard" data-mult="1">Standard</span>
+            <span class="chip" data-v="relaxed" data-mult="0.85">Flexible (0.85×)</span>
+          </div>
+        </div>
+        <div class="fg">
+          <span class="lbl">Team</span>
+          <div class="chips" data-group="team" data-single="1">
+            <span class="chip on" data-v="solo" data-mult="1">Solo (Hammad)</span>
+            <span class="chip" data-v="small" data-mult="1.8">Small team</span>
+          </div>
+        </div>
+      </div>
+      <div class="est-out">
+        <div class="eo-k">Estimated budget</div>
+        <div class="eo-budget" id="eo-budget">£6,000 – £7,800</div>
+        <div class="eo-line"><span>Timeline</span><b id="eo-weeks">~4 weeks</b></div>
+        <div class="eo-line"><span>Engagement</span><b id="eo-engage">Fixed scope</b></div>
+        <div class="eo-k" style="margin-top:18px">Recommended stack</div>
+        <div class="eo-stack" id="eo-stack"></div>
+        <a href="#contact" class="btn btn-primary magnetic" style="align-self:flex-start">Contact Hammad to discuss your project <span class="arr">↗</span></a>
+        <p style="font-family:var(--mono);font-size:.66rem;color:var(--ink-faint);margin-top:14px;letter-spacing:.04em">Indicative ranges only — final quote after a scoping call.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="wrap contact">
-    <span class="label reveal" style="display:inline-block">05 — Contact</span>
+    <span class="label reveal" style="display:inline-block">09 — Contact</span>
     <div class="big reveal" data-d="1">Let's build something<br><em>intelligent.</em></div>
     <a class="mail reveal" data-d="2" href="mailto:hammadrehman454@gmail.com">hammadrehman454@gmail.com</a>
     <div class="socials reveal" data-d="3">
@@ -436,6 +812,29 @@
     </div>
   </div>
 </section>
+
+<!-- ============ AI ASSISTANT — "Digital Hammad" ============ -->
+<button id="ai-fab" aria-label="Open Digital Hammad assistant">
+  <span class="fab-dot"></span>
+  <svg viewBox="0 0 24 24" fill="none" stroke="#0e0d0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</button>
+<div id="ai-panel" role="dialog" aria-label="Digital Hammad assistant" aria-modal="false">
+  <div class="ai-head">
+    <div class="ava">HR</div>
+    <div>
+      <div class="ai-name">Digital Hammad</div>
+      <div class="ai-sub">● Online · ask me anything</div>
+    </div>
+    <button class="ai-x" id="ai-close" aria-label="Close assistant">×</button>
+  </div>
+  <div class="ai-body" id="ai-body"></div>
+  <div class="ai-sugg" id="ai-sugg"></div>
+  <div class="ai-foot">
+    <input id="ai-input" type="text" autocomplete="off" placeholder="Ask about my work, skills, projects…" aria-label="Message" />
+    <button class="mic" id="ai-mic" aria-label="Speak your question" title="Voice input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg></button>
+    <button id="ai-send" aria-label="Send message"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
+  </div>
+</div>
 
 <footer>
   <div class="wrap foot">
@@ -480,6 +879,7 @@ addEventListener('load',()=>{
     return Math.sin(x*6.3+phase)*0.5 + Math.sin(x*2.1+phase*1.7)*0.3 + x*0.45;
   }
   function draw(){
+    if(document.querySelector('.hero.has-3d')){return;} // 3D scene took over — stop the 2D fallback loop
     ctx.clearRect(0,0,W,H);
     // faint grid
     ctx.strokeStyle='rgba(120,112,98,.10)';ctx.lineWidth=1;
@@ -537,6 +937,314 @@ addEventListener('load',()=>{
   }
   draw();
 })();
+</script>
+
+<!-- ============ PHASE-1 INTERACTION LAYER ============ -->
+<script>
+(function(){
+  const finePointer = matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- cursor glow ---------- */
+  const glow = document.getElementById('cursor-glow');
+  if(glow && finePointer){
+    addEventListener('pointermove', e=>{
+      glow.style.transform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%))`;
+    }, {passive:true});
+  }
+
+  /* ---------- magnetic buttons / cards ---------- */
+  if(finePointer && !reduceMotion){
+    document.querySelectorAll('.magnetic').forEach(el=>{
+      const strength = el.classList.contains('jcard') || el.classList.contains('rcard') ? 0.08 : 0.2;
+      el.addEventListener('pointermove', e=>{
+        const r = el.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width/2;
+        const y = e.clientY - r.top - r.height/2;
+        el.style.transform = `translate(${x*strength}px, ${y*strength}px)`;
+      });
+      el.addEventListener('pointerleave', ()=>{ el.style.transform=''; });
+    });
+  }
+
+  /* ---------- animated counters ---------- */
+  function animateCount(el){
+    if(el.dataset.done) return; el.dataset.done='1';
+    const mv = el.querySelector('.mv');
+    const target = parseFloat(el.dataset.count||'0');
+    const suffix = el.dataset.suffix||'';
+    const dur = 1300, start = performance.now();
+    const isInt = Number.isInteger(target);
+    function tick(now){
+      const p = Math.min((now-start)/dur, 1);
+      const v = target * (1 - Math.pow(1-p, 3));
+      mv.textContent = (isInt ? Math.round(v) : v.toFixed(1)) + suffix;
+      if(p<1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const mObs = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ animateCount(e.target); mObs.unobserve(e.target); } });
+  }, {threshold:.3});
+  document.querySelectorAll('.metric:not([data-live])').forEach(m=>mObs.observe(m));
+
+  /* ---------- live GitHub stats ---------- */
+  function setLive(key, val){
+    const el = document.querySelector(`.metric[data-live="${key}"]`);
+    if(!el) return;
+    el.classList.remove('skel');
+    el.dataset.count = val; el.dataset.suffix='';
+    animateCount(el);
+  }
+  fetch('https://api.github.com/users/HammadRehmanAwan', {headers:{'Accept':'application/vnd.github+json'}})
+    .then(r=>{ if(!r.ok) throw new Error('gh'); return r.json(); })
+    .then(d=>{ setLive('repos', d.public_repos||0); setLive('followers', d.followers||0); })
+    .catch(()=>{ setLive('repos', 16); setLive('followers', 5); }); // graceful fallback if rate-limited/offline
+
+  /* ---------- project cost estimator ---------- */
+  const featureStack = {auth:'Auth / JWT', mp:'Mirror / WebSocket', ai:'PyTorch / LLM API', dash:'Charts / D3', '3d':'Three.js', mobile:'Android / iOS'};
+  const gbp = n => '£' + Math.round(n).toLocaleString('en-GB');
+  function calcEstimate(){
+    const typeChip = document.querySelector('[data-group="type"] .chip.on');
+    if(!typeChip) return;
+    let sum = +typeChip.dataset.base;
+    let weeks = +typeChip.dataset.weeks;
+    const stack = new Set(typeChip.dataset.stack.split(','));
+    document.querySelectorAll('[data-group="features"] .chip.on').forEach(c=>{
+      sum += +c.dataset.cost; weeks += +c.dataset.w;
+      if(featureStack[c.dataset.v]) stack.add(featureStack[c.dataset.v]);
+    });
+    const tl = document.querySelector('[data-group="timeline"] .chip.on');
+    const team = document.querySelector('[data-group="team"] .chip.on');
+    sum *= (+tl.dataset.mult) * (+team.dataset.mult);
+    if(tl.dataset.v==='rush') weeks *= 0.7; else if(tl.dataset.v==='relaxed') weeks *= 1.3;
+    const low = Math.round(sum/100)*100, high = Math.round(sum*1.3/100)*100;
+    document.getElementById('eo-budget').textContent = gbp(low) + ' – ' + gbp(high);
+    document.getElementById('eo-weeks').textContent = '~' + Math.max(2, Math.round(weeks)) + ' weeks';
+    document.getElementById('eo-engage').textContent = team.dataset.v==='solo' ? 'Fixed scope' : 'Team engagement';
+    const stackEl = document.getElementById('eo-stack');
+    stackEl.innerHTML = '';
+    [...stack].forEach(s=>{ const sp=document.createElement('span'); sp.textContent=s; stackEl.appendChild(sp); });
+  }
+  document.querySelectorAll('#estimator .chips').forEach(group=>{
+    const single = group.dataset.single==='1';
+    group.querySelectorAll('.chip').forEach(chip=>{
+      chip.addEventListener('click', ()=>{
+        if(single){ group.querySelectorAll('.chip').forEach(c=>c.classList.remove('on')); chip.classList.add('on'); }
+        else chip.classList.toggle('on');
+        calcEstimate();
+      });
+    });
+  });
+  if(document.getElementById('estimator')) calcEstimate();
+
+  /* ============ AI ASSISTANT — "Digital Hammad" ============ */
+  const projectInfo = {
+    nhs:"<b>NHS Elective Waiting-List Forecasting</b> (MSc dissertation). Architecture — a memory-efficient, chunked Python pipeline over ~10.6M rows of NHS RTT data, aggregated to hospital × specialty × month (thousands of series). It benchmarks 7 models — Ridge, Random Forest, XGBoost vs Holt-Winters, ARIMA, SARIMA and Prophet — for the best 12-month forecast. The challenge was holding 10M+ rows in memory, solved with chunked processing; shipped 100% client-side for privacy.",
+    email:"<b>Gmail-Integrated AI Email-Reply Agent</b>. An LLM agent with autonomous and assisted modes that reads, drafts and sends Gmail replies. The AI layer is prompt-engineered Anthropic/OpenAI calls via LangChain, with confidence thresholds that auto-send high-confidence replies and escalate the rest for human review — integrated with the Gmail API.",
+    vision:"<b>AI Image-Authenticity Detector</b>. A React app that classifies AI-generated vs authentic images through a vision-model API, overlaying heatmaps showing which regions drove each prediction. The hard part was making model reasoning legible to non-technical users — solved with explainable heatmaps.",
+    credit:"<b>Credit-Risk &amp; Mortgage-Arrears Scoring</b>. Two interactive ML risk Spaces (German credit-risk, UK mortgage-arrears) owned end-to-end — dataset prep, model building and live hosting on Hugging Face via Gradio/Streamlit, so non-technical users can score cases in real time.",
+    crypto:"<b>Crypto Futures Trading Calculator</b>. A zero-dependency, client-side tool computing PnL, liquidation price, required margin and risk/reward in real time. Built in vanilla JS/HTML/CSS on GitHub Pages — everything runs in the browser, no data leaves the device.",
+    chrome:"<b>Chrome Browser Extension</b>. A published, Google-reviewed extension on the Chrome Web Store, built with JavaScript and the Chrome extension APIs to add a focused productivity feature."
+  };
+  const KB = [
+    {tags:['hello','hi ','hey','yo ','sup'], a:"Hey! I'm Digital Hammad — ask me about Hammad's AI work, his Unity & multiplayer background, individual projects, skills, education or how to hire him."},
+    {tags:['who','about him','about you','introduce','yourself'], a:"Hammad Rehman is an AI / Machine Learning Engineer based in London with an MSc in Artificial Intelligence and a Microsoft Azure Developer Associate certification. Before AI he spent 3+ years as a Top Rated Unity / C# developer building 3D, AR and real-time multiplayer games."},
+    {tags:['multiplayer','networking','mirror','netcode'], a:"Yes — multiplayer is core to his game-dev background. He built real-time networked gameplay with Mirror in Unity / C#, syncing state across Windows, Android and iOS for international clients."},
+    {tags:['ai exp','machine learning','deep learning','ml exp','what ai','ai experience'], a:"His AI experience spans the full ML lifecycle — data & feature engineering, model fitting and validation, and live hosting. He's shipped production ML on multi-million-row datasets with scikit-learn, PyTorch, TensorFlow, XGBoost and Hugging Face, plus LLM agents built with LangChain and the Anthropic & OpenAI APIs."},
+    {tags:['unity','game','c#','vuforia','ar '], a:"He spent 3+ years as a Top Rated Unity / C# developer — game mechanics, UI/UX, AR with Vuforia and real-time multiplayer with Mirror, shipped across Windows, Android and iOS."},
+    {tags:['tech','technolog','stack','tools','language','skill','what does he know'], a:"Languages: Python, SQL, R, C#, JavaScript. ML: scikit-learn, TensorFlow, PyTorch, Keras, XGBoost. Forecasting: ARIMA, SARIMA, Prophet, Holt-Winters. NLP/LLMs: Hugging Face, LangChain, RAG, Claude & OpenAI APIs. MLOps & cloud: MLflow, FastAPI, Docker, Azure, AWS, HF Spaces, Netlify."},
+    {tags:['project','built','portfolio','work has','has he'], a:"Highlights: an NHS waiting-list forecasting pipeline over ~10.6M rows; a Gmail-integrated LLM email-reply agent; an AI image-authenticity detector; credit-risk & mortgage-arrears scoring on Hugging Face; a crypto futures calculator; and a published Chrome extension. Ask me about any one of them!"},
+    {tags:['nhs','forecast','waiting','dissertation','rtt'], a:projectInfo.nhs},
+    {tags:['email','gmail','reply agent'], a:projectInfo.email},
+    {tags:['image','vision','authenticity','heatmap','detector'], a:projectInfo.vision},
+    {tags:['credit','mortgage','risk','gradio','streamlit'], a:projectInfo.credit},
+    {tags:['crypto','futures','calculator','trading'], a:projectInfo.crypto},
+    {tags:['chrome','extension'], a:projectInfo.chrome},
+    {tags:['education','study','msc','degree','universit','northumbria','bsc'], a:"MSc Artificial Intelligence at Northumbria University, London (2025–2026), with a dissertation forecasting NHS waiting lists over ~10.6M rows. Before that, a BSc (Hons) in Software Engineering at Lahore Garrison University (2019–2023)."},
+    {tags:['experience','job','employ','career','web tackles','work history'], a:"Currently Junior AI Engineer at Web Tackles (2025–present) — production ML, LLM agents and Hugging Face Spaces. Before that, 2019–2024 freelance Software & Game Developer (Top Rated on Upwork, 5-star on Fiverr) and Caffeine Studios."},
+    {tags:['goal','future','phd','research','ambition','next'], a:"He's aiming for PhD research at the intersection of reinforcement learning, AI agents and AI for games — bringing his game-dev and ML worlds together. The Research section has the full roadmap."},
+    {tags:['hire','available','availab','freelance','work with','collaborat','rate','cost','budget'], a:"He's available for work and open to AI/ML, LLM-agent and Unity projects. Best ways to reach him: email <a href='mailto:hammadrehman454@gmail.com'>hammadrehman454@gmail.com</a> or the <a href='hire-me.html'>Hire Hammad</a> page. There's also a project estimator on the home page."},
+    {tags:['contact','reach','email address','get in touch'], a:"Email <a href='mailto:hammadrehman454@gmail.com'>hammadrehman454@gmail.com</a>, connect on <a href='https://linkedin.com/in/hammadrehman454' target='_blank' rel='noopener'>LinkedIn</a>, or see <a href='https://github.com/HammadRehmanAwan' target='_blank' rel='noopener'>GitHub</a>."},
+    {tags:['location','where','based','london','live'], a:"He's based in London, England — open to both remote and London-based work."},
+    {tags:['azure','certif','aws','cloud'], a:"Microsoft Certified: Azure Developer Associate. He deploys across Azure and AWS, plus Hugging Face Spaces and Netlify."},
+    {tags:['thank','cheers','appreciate'], a:"Anytime! Anything else you'd like to know about Hammad?"}
+  ];
+  function answer(q){
+    const s = ' ' + q.toLowerCase() + ' ';
+    let best=null, score=0;
+    KB.forEach(e=>{
+      let sc=0; e.tags.forEach(t=>{ if(s.includes(t)) sc += t.trim().length; });
+      if(sc>score){ score=sc; best=e; }
+    });
+    if(best && score>0) return best.a;
+    return "Good question — I can talk about Hammad's AI/ML experience, his Unity & multiplayer background, any individual project, his skills, education, research goals, or how to hire him. Try one of the suggestions below.";
+  }
+
+  const fab = document.getElementById('ai-fab');
+  const panel = document.getElementById('ai-panel');
+  const body = document.getElementById('ai-body');
+  const suggBox = document.getElementById('ai-sugg');
+  const input = document.getElementById('ai-input');
+  const sendBtn = document.getElementById('ai-send');
+  const micBtn = document.getElementById('ai-mic');
+  const closeBtn = document.getElementById('ai-close');
+  const SUGGESTIONS = ["Can Hammad build multiplayer games?","What AI experience does he have?","What technologies does he know?","What projects has he built?","How do I hire him?"];
+  let greeted=false, voiceMode=false;
+
+  const scrollBody = ()=>{ body.scrollTop = body.scrollHeight; };
+  function renderSugg(){
+    suggBox.innerHTML='';
+    SUGGESTIONS.forEach(q=>{ const b=document.createElement('button'); b.textContent=q; b.addEventListener('click',()=>send(q)); suggBox.appendChild(b); });
+  }
+  function addMsg(text, who){
+    const d=document.createElement('div'); d.className='ai-msg '+who; d.textContent=text; body.appendChild(d); scrollBody();
+  }
+  function maybeSpeak(text){
+    if(!voiceMode || !('speechSynthesis' in window)) return;
+    const u=new SpeechSynthesisUtterance(text.replace(/<[^>]+>/g,'')); u.lang='en-GB'; u.rate=1.05;
+    speechSynthesis.cancel(); speechSynthesis.speak(u);
+  }
+  function typeWriter(el, txt){
+    let i=0;
+    (function step(){ el.textContent = txt.slice(0, i++); scrollBody(); if(i<=txt.length) setTimeout(step, 11); else maybeSpeak(txt); })();
+  }
+  function botReply(html){
+    const typing=document.createElement('div'); typing.className='ai-typing';
+    typing.innerHTML='<span></span><span></span><span></span>'; body.appendChild(typing); scrollBody();
+    setTimeout(()=>{
+      typing.remove();
+      const d=document.createElement('div'); d.className='ai-msg bot'; body.appendChild(d);
+      if(/[<]/.test(html)){ d.innerHTML=html; scrollBody(); maybeSpeak(html); }
+      else typeWriter(d, html);
+    }, 520 + Math.random()*340);
+  }
+  function send(text){
+    text=(text||'').trim(); if(!text) return;
+    addMsg(text,'user'); input.value=''; botReply(answer(text));
+  }
+  function openPanel(){
+    panel.classList.add('open'); fab.setAttribute('aria-expanded','true');
+    if(!greeted){ greeted=true; renderSugg(); botReply("Hi — I'm <b>Digital Hammad</b>, a quick assistant grounded in Hammad's CV and projects. Ask me anything, or tap a suggestion below."); }
+    setTimeout(()=>input.focus(), 350);
+  }
+  function closePanel(){ panel.classList.remove('open'); fab.setAttribute('aria-expanded','false'); }
+  fab.addEventListener('click', ()=> panel.classList.contains('open') ? closePanel() : openPanel());
+  closeBtn.addEventListener('click', closePanel);
+  sendBtn.addEventListener('click', ()=>send(input.value));
+  input.addEventListener('keydown', e=>{ if(e.key==='Enter') send(input.value); });
+  addEventListener('keydown', e=>{ if(e.key==='Escape' && panel.classList.contains('open')) closePanel(); });
+
+  /* voice input (Web Speech API) */
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  micBtn.addEventListener('click', ()=>{
+    if(!SR){ if(!greeted){greeted=true;renderSugg();} panel.classList.add('open'); botReply("Voice input isn't supported in this browser — try Chrome. You can type your question instead!"); return; }
+    const rec=new SR(); rec.lang='en-GB'; rec.interimResults=false; rec.maxAlternatives=1;
+    voiceMode=true; micBtn.classList.add('rec');
+    if(!panel.classList.contains('open')) openPanel();
+    rec.onresult=e=>{ const t=e.results[0][0].transcript; send(t); };
+    rec.onerror=()=>{ micBtn.classList.remove('rec'); };
+    rec.onend=()=>{ micBtn.classList.remove('rec'); };
+    try{ rec.start(); }catch(_){ micBtn.classList.remove('rec'); }
+  });
+
+  /* per-project "Ask AI about this project" */
+  document.querySelectorAll('.ask-ai').forEach(b=>{
+    const go=e=>{
+      if(e){ e.preventDefault(); e.stopPropagation(); }
+      if(!greeted){ greeted=true; renderSugg(); }
+      panel.classList.add('open'); fab.setAttribute('aria-expanded','true');
+      addMsg('Tell me about this project','user');
+      botReply(projectInfo[b.dataset.proj] || "That's one of Hammad's projects — ask me anything specific about it!");
+    };
+    b.addEventListener('click', go);
+    b.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' ') go(e); });
+  });
+})();
+</script>
+
+<!-- ============ THREE.JS HERO (progressive enhancement) ============ -->
+<script type="module">
+  const heroEl = document.querySelector('.hero');
+  const canvas = document.getElementById('three');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const small  = innerWidth < 760;
+  let hasGL = false;
+  try { const c=document.createElement('canvas'); hasGL = !!(window.WebGLRenderingContext && (c.getContext('webgl')||c.getContext('experimental-webgl'))); } catch(_) {}
+
+  // Only load the 3D scene where it's worth it — otherwise the 2D canvas fallback keeps running.
+  if(canvas && hasGL && !reduce && !small){
+    // try a primary CDN, fall back to a second; if both fail the 2D canvas stays.
+    const loadThree = () => import('https://esm.sh/three@0.160.0')
+      .catch(()=> import('https://unpkg.com/three@0.160.0/build/three.module.js'));
+    loadThree().then(THREE=>{
+      const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true, powerPreference:'high-performance'});
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+      const w=()=>heroEl.clientWidth, h=()=>heroEl.clientHeight;
+      renderer.setSize(w(), h());
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(60, w()/h(), 0.1, 100);
+      camera.position.z = 15;
+
+      const group = new THREE.Group();
+      scene.add(group);
+
+      // --- neural network: nodes + proximity edges ---
+      const N = 64, ACCENT = 0xff5a1f;
+      const nodes = [];
+      const posArr = [];
+      for(let i=0;i<N;i++){
+        const v = new THREE.Vector3((Math.random()-0.5)*24, (Math.random()-0.5)*13, (Math.random()-0.5)*10);
+        nodes.push(v); posArr.push(v.x, v.y, v.z);
+      }
+      const ptsGeo = new THREE.BufferGeometry();
+      ptsGeo.setAttribute('position', new THREE.Float32BufferAttribute(posArr, 3));
+      const points = new THREE.Points(ptsGeo, new THREE.PointsMaterial({color:ACCENT, size:0.18, transparent:true, opacity:0.95, blending:THREE.AdditiveBlending, depthWrite:false}));
+      group.add(points);
+
+      const edges = [];
+      for(let i=0;i<N;i++) for(let j=i+1;j<N;j++){
+        if(nodes[i].distanceTo(nodes[j]) < 4.4){ edges.push(nodes[i].x,nodes[i].y,nodes[i].z, nodes[j].x,nodes[j].y,nodes[j].z); }
+      }
+      const lineGeo = new THREE.BufferGeometry();
+      lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(edges, 3));
+      group.add(new THREE.LineSegments(lineGeo, new THREE.LineBasicMaterial({color:ACCENT, transparent:true, opacity:0.13})));
+
+      // --- central "AI core" + orbiting rings (holographic workstation feel) ---
+      const core = new THREE.Mesh(new THREE.IcosahedronGeometry(2.1, 1), new THREE.MeshBasicMaterial({color:ACCENT, wireframe:true, transparent:true, opacity:0.45}));
+      group.add(core);
+      const ringA = new THREE.Mesh(new THREE.TorusGeometry(3.6, 0.02, 8, 90), new THREE.MeshBasicMaterial({color:ACCENT, transparent:true, opacity:0.35}));
+      const ringB = new THREE.Mesh(new THREE.TorusGeometry(4.7, 0.02, 8, 90), new THREE.MeshBasicMaterial({color:0xffb38f, transparent:true, opacity:0.22}));
+      ringA.rotation.x = 1.1; ringB.rotation.y = 1.1; group.add(ringA); group.add(ringB);
+
+      // mark hero as 3D-driven (stops the 2D fallback loop) and fade canvas in
+      heroEl.classList.add('has-3d');
+      requestAnimationFrame(()=> canvas.classList.add('ready'));
+
+      let mx=0,my=0,tx=0,ty=0;
+      addEventListener('pointermove', e=>{ mx=(e.clientX/innerWidth-0.5); my=(e.clientY/innerHeight-0.5); }, {passive:true});
+      addEventListener('resize', ()=>{ renderer.setSize(w(), h()); camera.aspect=w()/h(); camera.updateProjectionMatrix(); });
+
+      let running = true;
+      document.addEventListener('visibilitychange', ()=>{ running = !document.hidden; if(running) loop(); });
+
+      function loop(){
+        if(!running) return;
+        tx += (mx-tx)*0.05; ty += (my-ty)*0.05;
+        group.rotation.y += 0.0016;
+        group.rotation.x = ty*0.45;
+        group.rotation.z = tx*0.12;
+        core.rotation.y -= 0.004; core.rotation.x += 0.002;
+        ringA.rotation.z += 0.003; ringB.rotation.z -= 0.0022;
+        camera.position.x = tx*2.4; camera.position.y = -ty*1.6;
+        camera.lookAt(0,0,0);
+        renderer.render(scene, camera);
+        requestAnimationFrame(loop);
+      }
+      loop();
+    }).catch(()=>{ /* CDN blocked — silently keep the 2D fallback */ });
+  }
 </script>
 </body>
 </html>
